@@ -1,3 +1,5 @@
+package pages;
+
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -13,26 +15,26 @@ public class MapPage {
     private SelenideElement map = $("#graph > svg > g > rect");
     private ElementsCollection listEpisodes = $$(".episode");
 
-    static MapPage open() {
+    public static MapPage open() {
         return Selenide.open("concept-map/#", MapPage.class);
     }
 
-    MapPage clickToGuestMap(String guestName) {
+    public MapPage clickToGuestMap(String guestName) {
         $(byText(guestName)).click();
         return this;
     }
 
-    void clickToEpisodePage() {
+    public void clickToEpisodePage() {
         $x("//*[contains(text(),'EPISODE ')]").click();
     }
 
 
-    SelenideElement getMap() {
+    public SelenideElement getMap() {
         return map;
     }
 
 
-    void listEpisodeShouldBeTheSame(ArrayList<String> expectedList) {
+    public void listEpisodeShouldBeTheSame(ArrayList<String> expectedList) {
         for (int i = 0; i < listEpisodes.size(); i++)
             assertThat(listEpisodes.get(i).getText(), equalTo(expectedList.get(i)));
     }

@@ -1,3 +1,5 @@
+package steps;
+
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Allure;
@@ -32,7 +34,7 @@ public class BaseSteps {
         }
     }
 
-    void screenshotsShouldBeTheSame(BufferedImage actual, String expectedImagePath, Matcher matcher) throws IOException {
+    public void screenshotsShouldBeTheSame(BufferedImage actual, String expectedImagePath, Matcher matcher) throws IOException {
         BufferedImage expectedImage =  getExpectedImage(expectedImagePath);
         Allure.addLabels(new Label().withName("testType").withValue("screenshotDiff"));
         ImageDiff diff = new ImageDiffer().makeDiff(actual, expectedImage);
@@ -42,14 +44,14 @@ public class BaseSteps {
         assertThat(diff.getDiffSize(), matcher);
     }
 
-     Screenshot takeScreenShotElement(SelenideElement element) {
+    public Screenshot takeScreenShotElement(SelenideElement element) {
         return new AShot()
                 .coordsProvider(new WebDriverCoordsProvider())
                 .shootingStrategy(ShootingStrategies.viewportRetina(100, 0, 0, 2)) //viewportRetina(100, 0, 0, 2))
                 .takeScreenshot(WebDriverRunner.getWebDriver(), element);
     }
 
-    Screenshot takeScreenShotFullPage() {
+   public Screenshot takeScreenShotFullPage() {
         return new AShot()
                 .coordsProvider(new WebDriverCoordsProvider())
                 .shootingStrategy(ShootingStrategies.viewportRetina(100, 0, 0, 2)) //viewportRetina(100, 0, 0, 2))

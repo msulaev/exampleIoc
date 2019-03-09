@@ -1,8 +1,10 @@
+package pages;
+
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-class EpisodePage {
+public class EpisodePage {
     private SelenideElement startIcon = $(".mejs-play");
     private SelenideElement stopIcon = $(".mejs-pause");
     private SelenideElement showButton = $(".btn");
@@ -22,7 +24,7 @@ class EpisodePage {
         showButton.click();
     }
 
-    String getAlertMessage() {
+    public String getAlertMessage() {
         return alertForAnonymous.getText();
     }
 }

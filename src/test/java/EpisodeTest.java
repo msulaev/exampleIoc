@@ -2,7 +2,10 @@ import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pages.EpisodePage;
+import pages.MapPage;
 import ru.yandex.qatools.ashot.Screenshot;
+import steps.BaseSteps;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package ScreenshotMaker;
+package screenshotMaker;
 
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
