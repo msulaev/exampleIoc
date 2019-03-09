@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
 
-    @BeforeEach
+    @BeforeAll
     void setUp(){
         Configuration.timeout = 10000;
         Configuration.browser = "chrome";

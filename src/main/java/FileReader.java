@@ -4,7 +4,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Objects;
 
-class ReaderTxt {
+class FileReader {
     ArrayList<String> getExpectedListEpisode() throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
 

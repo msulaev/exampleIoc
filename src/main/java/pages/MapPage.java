@@ -16,7 +16,7 @@ public class MapPage {
     private ElementsCollection listEpisodes = $$(".episode");
 
     public static MapPage open() {
-        return Selenide.open("concept-map/#", MapPage.class);
+        return Selenide.open("http://www.findtheconversation.com/concept-map/#", MapPage.class);
     }
 
     public MapPage clickToGuestMap(String guestName) {
@@ -27,7 +27,6 @@ public class MapPage {
     public void clickToEpisodePage() {
         $x("//*[contains(text(),'EPISODE ')]").click();
     }
-
 
     public SelenideElement getMap() {
         return map;
