@@ -10,7 +10,7 @@ public class EpisodePage {
     private SelenideElement showButton = $(".btn");
     private SelenideElement alertForAnonymous = $(".alert");
 
-   public boolean canPlayEpisode() {
+    public boolean canPlayEpisode() {
         startIcon.click();
         return stopIcon.exists();
     }

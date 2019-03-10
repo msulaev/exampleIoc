@@ -10,15 +10,13 @@ import steps.BaseSteps;
 import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 
- class EpisodeTest extends BaseTest {
+class EpisodeTest extends BaseTest {
     private static final String GUEST = "Ethan Zuckerman",
             ALERT_MESSAGE = "You must be logged in to post a comment.";
-     private EpisodePage episodePage = new EpisodePage();
-     private BaseSteps imageDif = new BaseSteps();
+    private EpisodePage episodePage = new EpisodePage();
+    private BaseSteps imageDif = new BaseSteps();
 
     @BeforeEach
     void setUp() {
@@ -35,8 +33,8 @@ import static org.hamcrest.Matchers.lessThan;
 
     @Test
     void shouldPlayAndStopEpisode() {
-        assertThat(episodePage.canPlayEpisode(), is(true)) ;
-        assertThat(episodePage.canStopEpisode(), is(true)) ;
+        assertThat(episodePage.canPlayEpisode(), is(true));
+        assertThat(episodePage.canStopEpisode(), is(true));
     }
 
     @Test
