@@ -18,7 +18,7 @@ public class MapPage {
     private SelenideElement envTheme = $("#graph > svg > g > g.nodes > g:nth-child(16)");
 
     public static MapPage open() {
-        return Selenide.open("http://www.findtheconversation.com/concept-map/#", MapPage.class);
+        return Selenide.open("/concept-map/#", MapPage.class);
     }
 
     public MapPage clickToGuestMap(String guestName) {

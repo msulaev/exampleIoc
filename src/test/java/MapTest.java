@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,12 +47,12 @@ class MapTest extends BaseTest {
     void shouldSeeGuestMap(String guestName, String pathToExpectImage) throws IOException, InterruptedException {
         map.clickToGuestMap(guestName);
         Screenshot mapScreen = imageDif.takeScreenShotElement(map.getMap());
-        imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), pathToExpectImage, lessThanOrEqualTo(90));
+        imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), pathToExpectImage, lessThanOrEqualTo(110));
     }
 
     @Test
     void shouldSeeThemeMap() throws IOException {
-        open("http://www.findtheconversation.com/concept-map/#environment");
+        open("/concept-map/#environment");
         Screenshot mapScreen = imageDif.takeScreenShotElement(map.getMap());
         imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), "expectedEnviromentMap.png", lessThan(5));
     }
@@ -61,7 +62,7 @@ class MapTest extends BaseTest {
         map.clickToGuestMap("Wes Jackson");
         map.showEnvThemeOnWesMap();
         Screenshot mapScreen = imageDif.takeScreenShotElement(map.getMap());
-        imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), "epectedShowEnvTheme.png", lessThan(90));
+        imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), "epectedShowEnvTheme.png", lessThan(110));
 
     }
 

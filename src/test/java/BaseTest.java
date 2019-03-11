@@ -6,12 +6,10 @@ import org.junit.jupiter.api.BeforeAll;
 class BaseTest {
 
     @BeforeAll
-    void setUp() {
+    static void setUpConf() {
         Configuration.timeout = 10000;
         Configuration.browser = "chrome";
         Configuration.headless = false;
-        Configuration.startMaximized = true;
-        Configuration.browserSize = "1366x768";
         Configuration.baseUrl = "http://www.findtheconversation.com/";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
