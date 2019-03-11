@@ -1,5 +1,4 @@
 import com.codeborne.selenide.WebDriverRunner;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
@@ -34,6 +32,7 @@ class MapTest extends BaseTest {
         MapPage.open();
     }
 
+
     @Test
     void shouldSeeMap() throws IOException {
         ArrayList<String> listUser = new FileReader().getExpectedListEpisode();
@@ -44,7 +43,7 @@ class MapTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("userAndExpectedImage")
-    void shouldSeeGuestMap(String guestName, String pathToExpectImage) throws IOException {
+    void shouldSeeGuestMap(String guestName, String pathToExpectImage) throws IOException, InterruptedException {
         map.clickToGuestMap(guestName);
         Screenshot mapScreen = imageDif.takeScreenShotElement(map.getMap());
         imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), pathToExpectImage, lessThanOrEqualTo(90));
@@ -57,12 +56,12 @@ class MapTest extends BaseTest {
         imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), "expectedEnviromentMap.png", lessThan(5));
     }
 
-    @Ignore
+    @Test
     void shoudSeeTreeMap() throws IOException {
         map.clickToGuestMap("Wes Jackson");
-       $("#graph > svg > g > g.nodes > g:nth-child(7)").click();
+        map.showEnvThemeOnWesMap();
         Screenshot mapScreen = imageDif.takeScreenShotElement(map.getMap());
-        imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), "epectedShowEnvTheme.png", lessThan(5));
+        imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), "epectedShowEnvTheme.png", lessThan(90));
 
     }
 
