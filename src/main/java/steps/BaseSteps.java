@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static ru.yandex.qatools.ashot.shooting.ShootingStrategies.viewportRetina;
 
 public class BaseSteps {
 
@@ -35,7 +36,7 @@ public class BaseSteps {
     }
 
     public void screenshotsShouldBeTheSame(BufferedImage actual, String expectedImagePath, Matcher matcher) throws IOException {
-        BufferedImage expectedImage =  getExpectedImage(expectedImagePath);
+        BufferedImage expectedImage = getExpectedImage(expectedImagePath);
         Allure.addLabels(new Label().withName("testType").withValue("screenshotDiff"));
         ImageDiff diff = new ImageDiffer().makeDiff(actual, expectedImage);
         attachImage("diff", diff.getMarkedImage());
@@ -47,14 +48,14 @@ public class BaseSteps {
     public Screenshot takeScreenShotElement(SelenideElement element) {
         return new AShot()
                 .coordsProvider(new WebDriverCoordsProvider())
-                .shootingStrategy(ShootingStrategies.viewportRetina(100, 0, 0, 2)) //viewportRetina(100, 0, 0, 2))
+                .shootingStrategy(viewportRetina(100, 0, 0, 2)) //viewportRetina(100, 0, 0, 2))
                 .takeScreenshot(WebDriverRunner.getWebDriver(), element);
     }
 
-   public Screenshot takeScreenShotFullPage() {
+    public Screenshot takeScreenShotFullPage() {
         return new AShot()
                 .coordsProvider(new WebDriverCoordsProvider())
-                .shootingStrategy(ShootingStrategies.viewportRetina(100, 0, 0, 2)) //viewportRetina(100, 0, 0, 2))
+                .shootingStrategy(viewportRetina(100, 0, 0, 2)) //viewportRetina(100, 0, 0, 2))
                 .takeScreenshot(WebDriverRunner.getWebDriver());
     }
 
