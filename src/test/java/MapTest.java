@@ -1,4 +1,4 @@
-import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Driver;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.openqa.selenium.WebDriver;
 import pages.MapPage;
 import ru.yandex.qatools.ashot.Screenshot;
 import steps.BaseSteps;
@@ -44,7 +45,7 @@ class MapTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("userAndExpectedImage")
-    void shouldSeeGuestMap(String guestName, String pathToExpectImage) throws IOException, InterruptedException {
+    void shouldSeeGuestMap(String guestName, String pathToExpectImage) throws IOException {
         map.clickToGuestMap(guestName);
         Screenshot mapScreen = imageDif.takeScreenShotElement(map.getMap());
         imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), pathToExpectImage, lessThanOrEqualTo(110));
@@ -63,12 +64,7 @@ class MapTest extends BaseTest {
         map.showEnvThemeOnWesMap();
         Screenshot mapScreen = imageDif.takeScreenShotElement(map.getMap());
         imageDif.screenshotsShouldBeTheSame(mapScreen.getImage(), "epectedShowEnvTheme.png", lessThan(110));
-
     }
 
-    @AfterEach
-    void tearDown() {
-        WebDriverRunner.closeWebDriver();
-    }
 }
 

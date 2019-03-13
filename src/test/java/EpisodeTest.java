@@ -1,4 +1,3 @@
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,9 +43,6 @@ class EpisodeTest extends BaseTest {
         assertThat(episodePage.getAlertMessage(), equalTo(ALERT_MESSAGE));
     }
 
-    @AfterEach
-    void tearDown() {
-        WebDriverRunner.closeWebDriver();
-    }
+
 
 }
