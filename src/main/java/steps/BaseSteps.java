@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static ru.yandex.qatools.ashot.shooting.ShootingStrategies.viewportPasting;
 import static ru.yandex.qatools.ashot.shooting.ShootingStrategies.viewportRetina;
 
 public class BaseSteps {
@@ -45,7 +46,7 @@ public class BaseSteps {
         assertThat(diff.getDiffSize(), matcher);
     }
 
-    public Screenshot takeScreenShotElement(SelenideElement element) {
+    public Screenshot tаakeScreenShotElement(SelenideElement element) {
         return new AShot()
                 .coordsProvider(new WebDriverCoordsProvider())
                 .shootingStrategy(viewportRetina(100, 0, 0, 2)) //viewportRetina(100, 0, 0, 2))
@@ -55,7 +56,7 @@ public class BaseSteps {
     public Screenshot takeScreenShotFullPage() {
         return new AShot()
                 .coordsProvider(new WebDriverCoordsProvider())
-                .shootingStrategy(viewportRetina(100, 0, 0, 2)) //viewportRetina(100, 0, 0, 2))
+                .shootingStrategy(viewportPasting(100)) //viewportRetina(100, 0, 0, 2))
                 .takeScreenshot(WebDriverRunner.getWebDriver());
     }
 

@@ -5,19 +5,15 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
-class BaseTest {
+import static com.codeborne.selenide.Browsers.CHROME;
+import static com.codeborne.selenide.Browsers.FIREFOX;
+
+public class BaseTest {
 
     @BeforeAll
     static void setUpConf() {
         Configuration.timeout = 10000;
-        Configuration.browser = "chrome";
-        Configuration.headless = false;
-        Configuration.baseUrl = "http://www.findtheconversation.com/";
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        Configuration.browser = FIREFOX;
     }
 
-    @AfterEach
-    void tearDown() {
-        WebDriverRunner.closeWebDriver();
-    }
 }
